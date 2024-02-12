@@ -1,0 +1,11 @@
+{{#each projects as |project|}}
+<div class="row mb-4 project">
+    <div class="col-md-5">
+        <a href="/blogpost/{{blogPost.id}}">{{blogPost.name}}</a>
+        <p>Posted by {{user.username}} {{format_date blogPost.dat_created}}</p>
+    </div>
+    <div>
+        <p>{{}}</p>
+    </div>
+</div>
+{{/each}}
