@@ -1,0 +1,1 @@
+const { User, Blog } = require('../../models/index-model')
