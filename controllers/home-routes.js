@@ -4,7 +4,7 @@ const authenticate = require('../utils/authenticate');
 
 router.get('/', authenticate, async (req, res) => {
     try{
-        res.render('/')
+        res.render('login')
     }catch(err){
         res.status(500).alert(err)
     }

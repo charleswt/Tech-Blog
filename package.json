@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "main": "pathToMain",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seed": "node seeds/seed.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

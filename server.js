@@ -10,6 +10,7 @@ const router = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
+    secret: 'Secret',
     cookie: {
         maxAge: 86400000,
         httpOnly: true,
@@ -18,7 +19,7 @@ const sess = {
     },
     resave: false,
     saveUninitialized: true,
-    sttore: new sequelizeStore({
+    store: new sequelizeStore({
         db: sequelize
     })
 };
@@ -30,7 +31,7 @@ router.set('view engine', 'handlebars');
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
-router.use(express.static(path.join(_dirname, 'public')));
+router.use(express.static(path.join(__dirname, 'public')));
 
 router.use(routes);
 
