@@ -6,7 +6,7 @@ const routes = require('./controllers/index-routes');
 const sequelize = require('./config/connection');
 const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const router = express();
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
@@ -24,17 +24,17 @@ const sess = {
     })
 };
 
-router.use(session(sess));
+app.use(session(sess));
 
-router.engine('handlebars', exphbs.engine);
-router.set('view engine', 'handlebars');
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
-router.use(express.json());
-router.use(express.urlencoded({ extended: true }));
-router.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-router.use(routes);
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-    router.listen(PORT, () => console.log('Now listening!'))
+    app.listen(PORT, () => console.log('Now listening!'))
 });
