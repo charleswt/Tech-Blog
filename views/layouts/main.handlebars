@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Tech Blog</title>
 </head>
 <body>
-    <div class="">
-        <header class="">
-            <a href="/homepage">Home</a>
-            <a href="/dashboard">Dashboard</a>
+    <div class="nav-style">
+        <header class="nav-row nav-text-style">
+            <a class="a-style" href="/homepage">Home</a>
+            <a class="a-style" href="/dashboard">Dashboard</a>
             {{#if logged_in}}
-            <button class="no-button" id="logout">Logout</button>
+            <button class="a-style" class="no-button" id="logout">Logout</button>
             {{else}}
-            <a href="/login">Login</a>
+            <a class="a-style" href="/login">Login</a>
             {{/if}}
         </header>
     </div>
-    <main class="">
         {{{ body }}}
-    </main>
 </body>
+<script src="/js/login.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/user.js"></script>
 </html>
