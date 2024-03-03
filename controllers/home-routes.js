@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/dashboard', authenticate, (req, res) => {
+router.get('/dashboard', (req, res) => {
     try{
         res.render('dashboard')
     } catch(err){
