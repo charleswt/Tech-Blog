@@ -5,6 +5,7 @@
   }
   
   html {
+    background-color: beige;
     height: 100%;
     max-height: 100vh;
   }
@@ -134,5 +135,63 @@
 @media screen and (min-width: 600px) and (max-width: 900px) {
     .login-style {
         width: 47%;
+    }
+}
+
+/* dashboard */
+
+.form-style {
+     display: flex;
+     flex-direction: column;
+     padding: 2rem;
+     background-color: aliceblue;
+     width: 60%;
+     min-width: 350px;
+     margin: 0 auto;
+     margin-top: 3rem;
+     border: 3px solid black;
+     border-radius: 1rem;
+}
+
+.content-input {
+    height: 6rem;
+    border-radius: 1rem;
+}
+
+/* homepage */
+
+.home-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.home-blog {
+    background-color: aliceblue;
+    width: 60%;
+    margin: 0 auto;
+    border: 3px solid black;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    padding: .7rem;
+}
+
+.home-content {
+    margin: .5rem;
+    background-color: white;
+    border-radius: .5rem;
+    padding: .5rem;
+
+}
+
+.home-text {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 700px) {
+    .home-row {
+        flex-direction: column;
     }
 }

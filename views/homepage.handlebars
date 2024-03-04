@@ -1,11 +1,9 @@
-{{#each blog }}
-<div class="row mb-4 project">
-    <div class="col-md-5">
-        <a href="/blogpost/{{blog.id}}">{{blog.name}}</a>
-        <p>Posted by {{user.username}} {{format_date blogPost.dat_created}}</p>
-    </div>
-    <div>
-        <p>{{}}</p>
-    </div>
+{{#each userInfo }}
+<div class="home-blog">
+  <div class="home-row ">
+      <a class="home-text" href="/blog/{{id}}">{{name}}</a>
+    <p class="home-text">Created by {{user.name}} on {{format_date date_created}}</p>
+  </div>
+  <p class="home-content">{{content}}</p>
 </div>
 {{/each}}

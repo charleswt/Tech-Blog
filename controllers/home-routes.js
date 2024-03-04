@@ -5,9 +5,16 @@ const authenticate = require('../utils/authenticate');
 router.get('/', async (req, res) => {
     try{
         const userData = await Blog.findAll({
-
-        })
-        res.render('homepage', { logged_in: req.session.logged_in, userData });
+            include: [
+              {
+                model: User,
+                attributes: ['name'],
+              },
+            ],
+          })
+          const userInfo = userData.map((data) => data.get({ plain: true }))
+          console.log(userInfo)
+        res.render('homepage', { logged_in: req.session.logged_in, userInfo });
     }catch(err){
         console.log(err)
         res.status(500).json(err)

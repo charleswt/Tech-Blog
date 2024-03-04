@@ -4,5 +4,9 @@ const authenticate = (req, res, next) => {
     }
       next();
 };
+
+const format_date = (date) => {
+  return date.toLocalDateString()
+}
   
   module.exports = authenticate;
