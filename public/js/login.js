@@ -18,8 +18,8 @@ const loginHandler = async (event) => {
                 const errorMessage = await response.text();
                 throw new Error(errorMessage || 'Login failed');
             }
-        } catch (error) {
-            console.error(error.message);
+        } catch (err) {
+            console.error(err)
         }
     }
 };

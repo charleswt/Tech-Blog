@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', authenticate, (req, res) => {
     try{
-        res.render('dashboard')
+        res.render('dashboard', { logged_in: req.session.logged_in })
     } catch(err){
         res.status(500).alert(err)
     }
@@ -32,7 +32,7 @@ router.get('/dashboard', authenticate, (req, res) => {
 router.get('/login', (req, res) => {
     try{
         if (req.session.logged_in){
-            return res.render('homepage')
+            res.render('homepage')
         }
         res.render('login')
     } catch(err){

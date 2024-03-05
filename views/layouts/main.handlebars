@@ -12,13 +12,15 @@
             <a class="a-style" href="/">Home</a>
             <a class="a-style" href="/dashboard">Dashboard</a>
             {{#if logged_in}}
-            <button class="a-style" class="no-button" id="logout">Logout</button>
+            <button class="a-style" id="logout">Logout</button>
             {{else}}
             <a class="a-style" href="/login">Login</a>
             {{/if}}
         </header>
     </div>
+    <main>
         {{{ body }}}
+        </main>
 </body>
 <script src="/js/logout.js"></script>
 <script src="/js/user.js"></script>
