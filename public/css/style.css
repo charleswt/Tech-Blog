@@ -161,13 +161,18 @@
 .post-form-btn {
     display: flex;
     flex-direction: row;
-    background-color: #333;
-    color: white;
+    background-color: antiquewhite;
+    color: #333;
     padding: 1rem;
     border-radius: 1rem;
-    border: .7px solid #777;
+    border: 2.3px solid #999;
     margin: 0 auto;
     margin-top: 1rem;
+    transition: .1s;
+}
+
+.post-form-btn:hover {
+    background-color: rgba(250, 235, 215, 0.6);
 }
 
 .big-plus {

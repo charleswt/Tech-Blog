@@ -1,7 +1,7 @@
 const formButtonHandler = () => {
     displayButtonFirst.innerHTML = `<div class="form-style">
     <input id="title-blog" class="input-style" placeholder="Title"><input id="content-blog" class="input-style content-input" placeholder="Content...">
-    <button id="create-post" class="login-button">Post</button>
+    <button onClick="newFormHandler(event)" class="login-button">Post</button>
     </div>`;
 }
 
@@ -17,7 +17,7 @@ const newFormHandler = async (event) => {
     const content = document.querySelector('#content-blog').value.trim();
   
     if (title && content) {
-      const response = await fetch(`/api/blog`, {
+      const response = await fetch(`/api/blog/createPost`, {
         method: 'POST',
         body: JSON.stringify({ title, content }),
         headers: {
@@ -29,12 +29,10 @@ const newFormHandler = async (event) => {
         return document.location.replace('/');
       } 
       alert('Could not post');
-      console.error('newFormHandler could not be executed when clicked with a response of', response)
-      console.log(title, content)
+      console.error('newFormHandler could not be executed when clicked with a response of', response);
+      console.log(title, content);
     }
   };
-
-  document.querySelector('#create-post').addEventListener('click', newFormHandler);
   
   const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
@@ -48,7 +46,7 @@ const newFormHandler = async (event) => {
         return document.location.replace('/');
       } 
       alert('Could not delete post');
-      console.error('delButtonHandler could not be executed when clicked with a response of', response)
+      console.error('delButtonHandler could not be executed when clicked with a response of', response);
     }
   };
   
