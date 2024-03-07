@@ -11,6 +11,7 @@ const loginHandler = async (event) => {
                 body: JSON.stringify({ username, password }),
                 headers: { 'content-type': 'application/json' },
             });
+            console.log(username, password)
 
             if (response.ok) {
                 document.location.replace('/');

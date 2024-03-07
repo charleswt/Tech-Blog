@@ -1,8 +1,8 @@
 {{#each userInfo }}
 <div class="home-blog">
   <div class="home-row ">
-      <a class="home-text" href="/blog/{{id}}">{{name}}</a>
-    <p class="home-text">Created by {{user.name}} on {{format_date date_created}}</p>
+      <a class="home-text" href="/blog/{{id}}">{{username}}</a>
+    <p class="home-text">Created by {{user.username}} on {{format_date date_created}}</p>
   </div>
   <p class="home-content">{{content}}</p>
 </div>
