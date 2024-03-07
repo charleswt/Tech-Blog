@@ -21,9 +21,20 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/dashboard', authenticate, (req, res) => {
+router.get('/dashboard', authenticate, async (req, res) => {
     try{
-        res.render('dashboard', { logged_in: req.session.logged_in })
+        const userData = await Blog.findAll({ where: { username: req.session.username},
+            include: [
+                {
+                  model: User,
+                  attributes: ['username'],
+                },
+              ],
+            });
+
+        const userInfo = userData.map((data) => data.get({ plain: true }))
+
+        res.render('dashboard', { logged_in: req.session.logged_in, userInfo })
     } catch(err){
         res.status(500).alert(err)
     }

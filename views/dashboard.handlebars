@@ -9,6 +9,10 @@
     <p class="home-text">Created by {{user.username}} on {{format_date date_created}}</p>
   </div>
   <p class="home-content">{{content}}</p>
+  <div>
+  <button>Update</button>
+  <button onclick="delButtonHandler(event)" data-id="{{id}}">Delete</button>
+  </div>
 </div>
 {{/each}}
 

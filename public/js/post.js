@@ -26,7 +26,7 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        return document.location.replace('/');
+        return location.reload()
       } 
       alert('Could not post');
       console.error('newFormHandler could not be executed when clicked with a response of', response);
@@ -43,12 +43,10 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        return document.location.replace('/');
+        return location.reload()
       } 
       alert('Could not delete post');
       console.error('delButtonHandler could not be executed when clicked with a response of', response);
     }
   };
-  
-document.querySelector('#blog-delete').addEventListener('click', delButtonHandler);
   
