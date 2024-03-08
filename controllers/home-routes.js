@@ -10,6 +10,10 @@ router.get('/', async (req, res) => {
                 model: User,
                 attributes: ['username'],
               },
+              {
+                model: Comments,
+                attributes: ['comment', 'commentCreator']
+              }
             ],
           })
           const userInfo = userData.map((data) => data.get({ plain: true }))
@@ -19,7 +23,7 @@ router.get('/', async (req, res) => {
         console.log(err)
         res.status(500).json(err)
     }
-})
+});
 
 router.get('/dashboard', authenticate, async (req, res) => {
     try {
@@ -30,10 +34,6 @@ router.get('/dashboard', authenticate, async (req, res) => {
                 {
                     model: User,
                     attributes: ['username'],
-                },
-                {
-                    model: Comments, 
-                    attributes: ['comment'],
                 },
             ],
         });

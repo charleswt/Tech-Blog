@@ -4,8 +4,6 @@ const authenticate = require('../../utils/authenticate');
 
 router.post('/createPost', authenticate, async (req, res) => {
   try {
-    console.log(req.body.title, req.body.content)
-    console.log(req.session.user_id, req.session.username)
     const newBlog = await Blog.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -21,9 +19,8 @@ router.post('/createPost', authenticate, async (req, res) => {
 
 router.get('/textToUpdate/:id', async (req, res) => {
   try {
-    const blogId = req.params.id;
 
-    const blogData = await Blog.findByPk(blogId, {
+    const blogData = await Blog.findByPk(req.params.id, {
       include: [
         {
           model: User,
