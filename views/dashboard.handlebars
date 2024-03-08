@@ -5,15 +5,13 @@
 {{#each userInfo }}
 <div class="home-blog">
   <div class="home-row ">
-      <a class="home-text" href="/blog/{{id}}">{{username}}</a>
-    <p class="home-text">Created by {{user.username}} on {{format_date date_created}}</p>
-  </div>
-  <p class="home-content">{{content}}</p>
-  <div>
-  <button>Update</button>
-  <button onclick="delButtonHandler(event)" data-id="{{id}}">Delete</button>
+      <a class="home-text">{{title}}</a>
+    <p class="home-text">{{format_date date_created}}</p>
+  <button onclick="updateFormDisplayHandler(event)" data-updateId="{{id}}">Update</button>
+  <button onclick="delButtonHandler(event)" data-deleteId="{{id}}">Delete</button>
   </div>
 </div>
+<div id="updateForm{{id}}"></div>
 {{/each}}
 
 <script src="/js/post.js"></script>
