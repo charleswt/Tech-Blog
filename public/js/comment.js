@@ -1,27 +1,34 @@
-const commentId = document.querySelector('#commentFormElementId').getAttribute('data-displayCommentFormId');
+const commentForms = document.querySelectorAll('#commentForm');
 
-document.querySelector(`#commentForm${commentId}`).addEventListener('click', displayCommentForm);
-
-document.querySelector(`sendComment${commentId}`).addEventListener('click', createCommentHandler);
-
-const displayCommentForm = (event) => {
+commentForms.forEach(commentForm => {
+  const commentId = commentForm.getAttribute('data-displayCommentFormId');
   
-  const commentForm = document.querySelector(`#displayCommentForm${commentId}`);
-    
-  commentForm.innerHTML = `
-    <div class="home-blog">
+  commentForm.addEventListener('click', () => displayCommentForm(commentId));
+});
+
+const displayCommentForm = (commentId) => {
+  const commentFormContainer = document.querySelector(`#displayCommentForm${commentId}`);
+
+  if (commentFormContainer.children.length === 0) {
+    const commentForm = document.createElement('div');
+    commentForm.classList.add('home-blog');
+    commentForm.innerHTML = `
       <div class="home-row ">
         <input id="commentInput${commentId}" class="home-content">
-        <button id="sendComment${commentId}">Send</button>
+        <button class="sendComment">Send</button>
       </div>
     </div>`;
+
+    commentFormContainer.appendChild(commentForm);
+
+    commentForm.querySelector('.sendComment').addEventListener('click', () => createCommentHandler(commentId));
+  }
 };
 
-const createCommentHandler = async (event) => {
-  event.preventDefault();
-
+const createCommentHandler = async (commentId) => {
   const commentInput = document.querySelector(`#commentInput${commentId}`).value;
-
+  
+  console.log(commentId)
   try {
     const response = await fetch(`/comments/comment/${commentId}`, {
       method: 'POST',
@@ -35,6 +42,7 @@ const createCommentHandler = async (event) => {
       console.log('Comment created successfully');
     } else {
       console.error('Failed to create comment');
+      console.log(response)
     }
   } catch (error) {
     console.error('Error during comment creation:', error);
