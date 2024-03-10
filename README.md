@@ -27,7 +27,7 @@ npm start
 
 ## Usage
 
- 1. [Website Link](https://notetaker-ch-11-bee10ebdef6d.herokuapp.com/)
+ 1. [Website Link](https://tech-blog-ct-4cf92c1dd72a.herokuapp.com/)
  2. Login or signup.
  3. Navigate to the dashboard, then create a post.
  4. Navigate back to the home and see your new post. Notice that you can also comment on each post.
