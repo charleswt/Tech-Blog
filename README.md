@@ -20,7 +20,6 @@ If you intend to git clone this repository, make sure to have Node.js and MySQL 
 npm i
 mysql -u "your username" -p
 You will be prompted to enter your password. After that, run:
-```bash
 exit
 npm run seed
 npm start
@@ -35,9 +34,9 @@ npm start
 
 ## Screen-Shot
 
-(./public/img/sc-1.png)</br>
-(./public/img/sc-2.png)</br>
-(./public/img/sc-3.png)
+![sc](./public/img/sc-1.png)</br>
+![sc](./public/img/sc-2.png)</br>
+![sc](./public/img/sc-3.png)
 
 ## License
 
