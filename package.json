@@ -5,9 +5,10 @@
   "version": "1.0.0",
   "main": "pathToMain",
   "scripts": {
-    "start": "node server.js",
+    "start": "node seeds/seed.js && node server.js",
     "nodemon": "nodemon server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "local": "node server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
