@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
         const userInfo = userData.map((data) => {
             const blogInfo = data.get({ plain: true });
 
-            // Map over the comments array and convert each comment instance to a plain object
             const comments = blogInfo.comments.map((comment) => ({
                 id: comment.id,
                 comment: comment.comment,
