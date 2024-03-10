@@ -15,7 +15,7 @@ const displayCommentForm = (commentId) => {
     commentForm.innerHTML = `
       <div class="home-row ">
         <input id="commentInput${commentId}" class="home-content">
-        <button class="sendComment">Send</button>
+        <button class="sendComment login-button">Send</button>
       </div>
     </div>`;
 
@@ -30,7 +30,7 @@ const createCommentHandler = async (commentId) => {
   
   console.log(commentId)
   try {
-    const response = await fetch(`/comments/comment/${commentId}`, {
+    const response = await fetch(`/api/comments/comment/${commentId}`, {
       method: 'POST',
       body: JSON.stringify({ comment: commentInput }),
       headers: {
@@ -40,6 +40,7 @@ const createCommentHandler = async (commentId) => {
 
     if (response.ok) {
       console.log('Comment created successfully');
+      location.reload()
     } else {
       console.error('Failed to create comment');
       console.log(response)

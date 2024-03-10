@@ -3,25 +3,39 @@ const { User, Blog, Comments } = require('../models/index-model');
 const authenticate = require('../utils/authenticate');
 
 router.get('/', async (req, res) => {
-    try{
+    try {
         const userData = await Blog.findAll({
             include: [
-              {
-                model: User,
-                attributes: ['username'],
-              },
-              {
-                model: Comments,
-                attributes: ['comment', 'commentCreator']
-              }
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Comments,
+                    attributes: ['id', 'comment', 'date_created', 'commentCreator'],
+                },
             ],
-          })
-          const userInfo = userData.map((data) => data.get({ plain: true }))
-          console.log(userInfo)
+        });
+
+        const userInfo = userData.map((data) => {
+            const blogInfo = data.get({ plain: true });
+
+            // Map over the comments array and convert each comment instance to a plain object
+            const comments = blogInfo.comments.map((comment) => ({
+                id: comment.id,
+                comment: comment.comment,
+                date_created: comment.date_created,
+                commentCreator: comment.commentCreator,
+            }));
+
+            return { ...blogInfo, comments };
+        });
+
+        console.log(userInfo);
         res.render('homepage', { logged_in: req.session.logged_in, userInfo });
-    }catch(err){
-        console.log(err)
-        res.status(500).json(err)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
 });
 

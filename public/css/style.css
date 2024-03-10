@@ -217,3 +217,13 @@
         flex-direction: column;
     }
 }
+
+.comment {
+    padding: 3px;
+    border-bottom: 1px solid rgb(104, 108, 110);
+}
+
+.comment-style, 
+.home-content {
+    font-size: 1.2rem;
+}

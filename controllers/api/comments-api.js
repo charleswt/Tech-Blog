@@ -4,11 +4,6 @@ const { Blog, Comments } = require('../../models/index-model')
 router.post('/comment/:blogId', async (req, res) => {
     try {
       const username = req.session.username;
-  
-      if (!username) {
-        return res.status(401).json({ message: 'User not authenticated' });
-      }
-  
       const { blogId } = req.params;
       const { comment } = req.body;
   
@@ -22,7 +17,7 @@ router.post('/comment/:blogId', async (req, res) => {
         return res.status(404).json({ message: 'Blog not found' });
       }
   
-      const userData = await Comments.create({ comment, commentCreator: username });
+      const userData = await Comments.create({ comment, commentCreator: username, blog_id: blogId });
   
       res.status(201).json({ userData });
     } catch (err) {
